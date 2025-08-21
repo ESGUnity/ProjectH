@@ -4,6 +4,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
+// 패 오브젝트에 붙을 컴포넌트
 public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
 {
     [Header("주요 프로퍼티")]

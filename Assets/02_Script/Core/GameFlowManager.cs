@@ -71,8 +71,8 @@ public class GameFlowManager : MonoBehaviour
     }
     private void StartPan() // 판 시작
     {
+        cardSettingManager.GenerateInitCards(); // 해당 판에서 사용할 패 오브젝트들을 생성
         cardSettingManager.DealHandCards(); // 손 패 나눠주기
-        cardSettingManager.GenerateMiddlePile(); // 중간 더미 생성
     }
     private void StartSetUp() // 판 종료 후 화투를 추가하거나 규칙을 추가하는 정비하는 시간 시작
     {
