@@ -33,7 +33,7 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     void Update()
     {
         // 캐싱
-        GameFlowStateEnum currentState = GameFlowManager.Instance.GameFlowState;
+        GameFlowStateEnum currentState = GameFlowManager.Instance.gameFlowState;
 
         if (prevState != currentState) // GameFlowState가 바뀐 경우
         {

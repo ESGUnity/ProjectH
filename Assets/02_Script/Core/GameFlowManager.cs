@@ -5,27 +5,28 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
-    [Header("컴포넌트")]
-    PlayerCard pCard;
-
-    FieldCardManager fieldCardManager;
-    HandCardManager handCardManager;
-    AcquiredCardManager acquiredCardManager;
-
+    // 프리팹
     [Header("프리팹")]
-    [SerializeField] GameObject prefab_CardObj;
+    [SerializeField] private GameObject prefab_CardObj;
 
-    [Header("주요 프로퍼티")]
-    const int MAX_ROUND = 24;
-    int currentRound;
-    public GameFlowStateEnum GameFlowState;
+    // 컴포넌트
+    private PlayerCard pCard;
+    private OppoCard oCard;
+    private CardSettingManager cardSettingManager;
 
-    [Header("싱글턴")]
-    static GameFlowManager instance;
+    // 필드
+    private const int MAX_PAN = 20;
+    private int currentPan; // 현재 판 수
+    private GameFlowStateEnum gameFlowState;
+    public GameFlowStateEnum GameFlowState => gameFlowState;
+
+    // 싱글턴
+    private static GameFlowManager instance;
     public static GameFlowManager Instance;
 
-    void Awake()
+    private void Awake()
     {
+        // 싱글턴
         if (instance == null)
         {
             instance = this;
@@ -35,17 +36,16 @@ public class GameFlowManager : MonoBehaviour
             Destroy(gameObject);
         }
 
-        pCard = GetComponent<PlayerCard>();
-
-        fieldCardManager = GetComponent<FieldCardManager>();
-        handCardManager = GetComponent<HandCardManager>();
-        acquiredCardManager = GetComponent<AcquiredCardManager>();
+        // 컴포넌트 할당
+        TryGetComponent(out pCard);
+        TryGetComponent(out oCard);
+        TryGetComponent(out cardSettingManager);
     }
 
     #region 주요 메서드
-    void InitGame(InitGameEnum initGame) // 게임 실행 후 새 게임, 이어하기 모두 여기서 관리
+    private void InitGame(InitGameEnum initGame) // 새 게임 혹은 이어하기 메서드
     {
-        currentRound = 0;
+        currentPan = 0;
 
         if (initGame == InitGameEnum.NewGame) // 새 게임인 경우
         {
@@ -61,7 +61,7 @@ public class GameFlowManager : MonoBehaviour
             }
             else // 튜토리얼을 완료한 경우 바로 본 게임
             {
-                StartRound();
+                StartPan();
             }
         }
         else if (initGame == InitGameEnum.LoadGame) // 이어하기인 경우
@@ -69,17 +69,12 @@ public class GameFlowManager : MonoBehaviour
             // TODO
         }
     }
-    void StartRound() // 본 게임 시작
+    private void StartPan() // 판 시작
     {
-        // 본 게임 화면으로 넘어온다.
-
-        fieldCardManager.GenerateMiddlePile(); // 중간 더미 생성
-        handCardManager.SetPlayerHandCards(); // 내가 먼저 세팅했던 손패를 받는다.
-        // 상대에게 패 10장을 준다.
-        // 바닥에 8장을 깐다.
-        // 나 먼저 카드를 낸다.
+        cardSettingManager.DealHandCards(); // 손 패 나눠주기
+        cardSettingManager.GenerateMiddlePile(); // 중간 더미 생성
     }
-    void StartSetting() // 본 게임 전 구매 및 덱 정비
+    private void StartSetUp() // 판 종료 후 화투를 추가하거나 규칙을 추가하는 정비하는 시간 시작
     {
         // 내 카드 10장을 뽑고 그 중 1장에 꽃을 그려넣는다.
         // 사용 카드인 버섯 카드를 구매한다.
@@ -91,19 +86,11 @@ public class GameFlowManager : MonoBehaviour
     #region 보조 메서드
     public bool IsInState(List<GameFlowStateEnum> states)
     {
-        return states.Contains(GameFlowState);
+        return states.Contains(gameFlowState);
     }
     public bool IsInState(GameFlowStateEnum states)
     {
-        return states == GameFlowState;
+        return states == gameFlowState;
     }
     #endregion
-}
-public enum GameFlowStateEnum
-{
-    None, Setting, Round,
-}
-public enum InitGameEnum
-{
-    None, NewGame, LoadGame
 }
