@@ -8,14 +8,12 @@ public class GameFlowManager : MonoBehaviour
     // 상수
     private const int MAX_PAN = 20;
 
-    // 프리팹
-    [Header("프리팹")]
-    [SerializeField] private GameObject prefab_CardObj;
-
     // private 필드(컴포넌트)
+    private CardSettingManager cardSettingManager;
+    private CardManager cardManager;
+    private SaveLoadManager saveLoadManager;
     private PlayerCard pCard;
     private OppoCard oCard;
-    private CardSettingManager cardSettingManager;
 
     // private 필드
     private int currentPan; // 현재 판 수
@@ -42,9 +40,11 @@ public class GameFlowManager : MonoBehaviour
         DontDestroyOnLoad(gameObject);
 
         // 컴포넌트 할당
+        TryGetComponent(out cardSettingManager);
+        TryGetComponent(out cardManager);
+        TryGetComponent(out saveLoadManager);
         TryGetComponent(out pCard);
         TryGetComponent(out oCard);
-        TryGetComponent(out cardSettingManager);
     }
 
     // 메인

@@ -32,7 +32,7 @@ public static class UtilityAndHelper
             return false;
         }
 
-        // 1. UI 체크 (RectTransform 여부로 판단)
+        // UI 체크 (RectTransform 여부로 판단)
         if (IsUI(target))
         {
             PointerEventData pointerData = new PointerEventData(EventSystem.current)
@@ -49,8 +49,7 @@ public static class UtilityAndHelper
                     return true;
             }
         }
-
-        // 2. 3D 체크 (Collider 여부로 판단)
+        // 3D 체크 (Collider 여부로 판단)
         else
         {
             Ray ray = Camera.main.ScreenPointToRay(Input.mousePosition);
@@ -69,10 +68,20 @@ public static class UtilityAndHelper
     }
 }
 
-
+// 구조체
 public struct PRS
 {
     public Vector3 Pos;
     public Vector3 Rot;
     public Vector3 Scale;
+}
+
+// 열거형
+public enum GameStateEnum
+{
+    None, Setting, Round,
+}
+public enum InitGameEnum
+{
+    None, NewGame, LoadGame,
 }
