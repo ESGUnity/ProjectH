@@ -1,10 +1,10 @@
 using UnityEngine;
 
-public class Enums
+public class Utility
 {
 
 }
-public enum GameFlowStateEnum
+public enum GameStateEnum
 {
     None, Setting, Round,
 }

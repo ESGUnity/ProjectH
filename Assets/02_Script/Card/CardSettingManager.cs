@@ -47,18 +47,17 @@ public class CardSettingManager : MonoBehaviour
     {
         List<Card> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
 
-        // 덱의 패들로 패 오브젝트 생성
+        // 해당 판에 사용할 패 오브젝트 생성
         foreach (Card card in cards)
         {
-            GameObject go = Instantiate(prefab_CardObj);
+            GameObject go = CardObjPool.Instance.GetObject();
             go.GetComponent<CardObj>().SetCardInfo(card);
-
         }
-
     }
     public void DealHandCards() // 플레이어와 상대의 손 패를 나누기
     {
         List<Card> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
+
 
 
     }

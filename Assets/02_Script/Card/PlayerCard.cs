@@ -4,9 +4,11 @@ using UnityEngine;
 
 public class PlayerCard : MonoBehaviour
 {
-    // 필드
+    // private 필드
     private List<Card> deckCards;
+    private List<Card> handCards;
+
+    // public Getter
     public List<Card> OriginDeckCards => deckCards;
     public List<Card> CloneDeckCards => deckCards.ToList();
-    private List<Card> handCards;
 }

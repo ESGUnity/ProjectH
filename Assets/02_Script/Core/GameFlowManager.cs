@@ -5,36 +5,41 @@ using UnityEngine;
 
 public class GameFlowManager : MonoBehaviour
 {
+    // 상수
+    private const int MAX_PAN = 20;
+
     // 프리팹
     [Header("프리팹")]
     [SerializeField] private GameObject prefab_CardObj;
 
-    // 컴포넌트
+    // private 필드(컴포넌트)
     private PlayerCard pCard;
     private OppoCard oCard;
     private CardSettingManager cardSettingManager;
 
-    // 필드
-    private const int MAX_PAN = 20;
+    // private 필드
     private int currentPan; // 현재 판 수
-    private GameFlowStateEnum gameFlowState;
-    public GameFlowStateEnum GameFlowState => gameFlowState;
+    private GameStateEnum gameState;
+
+    // public Getter
+    public GameStateEnum GameState => gameState;
 
     // 싱글턴
     private static GameFlowManager instance;
-    public static GameFlowManager Instance;
+    public static GameFlowManager Instance => instance;
 
+    // 유니티 콜백
     private void Awake()
     {
         // 싱글턴
-        if (instance == null)
+        if (instance != null)
         {
-            instance = this;
-        }
-        else
-        {
+            Debug.LogError("GameFlowManager Send : 중복 싱글턴 생성 시도.");
             Destroy(gameObject);
+            return;
         }
+        instance = this;
+        DontDestroyOnLoad(gameObject);
 
         // 컴포넌트 할당
         TryGetComponent(out pCard);
@@ -42,8 +47,8 @@ public class GameFlowManager : MonoBehaviour
         TryGetComponent(out cardSettingManager);
     }
 
-    #region 주요 메서드
-    private void InitGame(InitGameEnum initGame) // 새 게임 혹은 이어하기 메서드
+    // 메인
+    private void InitGame(InitGameEnum initGame) // 새 게임 혹은 이어하기(타이틀의 버튼에 연결)
     {
         currentPan = 0;
 
@@ -74,7 +79,7 @@ public class GameFlowManager : MonoBehaviour
         cardSettingManager.GenerateInitCards(); // 해당 판에서 사용할 패 오브젝트들을 생성
         cardSettingManager.DealHandCards(); // 손 패 나눠주기
     }
-    private void StartSetUp() // 판 종료 후 화투를 추가하거나 규칙을 추가하는 정비하는 시간 시작
+    private void StartSetUp() // 판 종료 후 화투를 추가하거나 규칙을 추가하는 정비 시작
     {
         // 내 카드 10장을 뽑고 그 중 1장에 꽃을 그려넣는다.
         // 사용 카드인 버섯 카드를 구매한다.
@@ -82,15 +87,14 @@ public class GameFlowManager : MonoBehaviour
         // 모든 세팅을 마친 플레이어는 시작 버튼을 눌러 본 게임을 시작한다.
 
     }
-    #endregion
-    #region 보조 메서드
-    public bool IsInState(List<GameFlowStateEnum> states)
+
+    // 유틸
+    public bool IsInState(List<GameStateEnum> states)
     {
-        return states.Contains(gameFlowState);
+        return states.Contains(gameState);
     }
-    public bool IsInState(GameFlowStateEnum states)
+    public bool IsInState(GameStateEnum states)
     {
-        return states == gameFlowState;
+        return states == gameState;
     }
-    #endregion
 }
