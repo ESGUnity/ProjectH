@@ -5,10 +5,10 @@ using UnityEngine;
 public class PlayerCard : MonoBehaviour
 {
     // private 필드
-    private List<Card> deckCards;
-    private List<Card> handCards;
+    private List<CardInstance> deckCards;
+    private List<CardInstance> handCards;
 
     // public Getter
-    public List<Card> OriginDeckCards => deckCards;
-    public List<Card> CloneDeckCards => deckCards.ToList();
+    public List<CardInstance> OriginDeckCards => deckCards;
+    public List<CardInstance> CloneDeckCards => deckCards.ToList();
 }

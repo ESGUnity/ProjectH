@@ -85,3 +85,7 @@ public enum InitGameEnum
 {
     None, NewGame, LoadGame,
 }
+public enum CardRarityEnum
+{
+    Common, Rare, Epic
+}

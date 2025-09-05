@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class OppoCard : MonoBehaviour
 {
-    public List<Card> HandCards { get; private set; }
+    public List<CardInstance> HandCards { get; private set; }
 
     void Start()
     {

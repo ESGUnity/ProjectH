@@ -45,10 +45,10 @@ public class CardSettingManager : MonoBehaviour
 
     public void GenerateInitCards() // 판 시작 시 게임에서 사용될 패 오브젝트를 생성(중간 더미)
     {
-        List<Card> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
+        List<CardInstance> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
 
         // 해당 판에 사용할 패 오브젝트 생성
-        foreach (Card card in cards)
+        foreach (CardInstance card in cards)
         {
             GameObject go = CardObjPool.Instance.GetObject();
             go.GetComponent<CardObj>().SetCardInfo(card);
@@ -56,7 +56,7 @@ public class CardSettingManager : MonoBehaviour
     }
     public void DealHandCards() // 플레이어와 상대의 손 패를 나누기
     {
-        List<Card> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
+        List<CardInstance> cards = UtilityAndHelper.Shuffle(pCard.CloneDeckCards); // 덱 셔플 후 캐싱
 
 
 

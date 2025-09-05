@@ -17,7 +17,7 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     [SerializeField] private SpriteRenderer cardBaseSprite;
 
     // private 필드
-    private Card cardInfo;
+    private CardInstance cardInfo;
     private PRS originPRS;
     private int OriginOrder;
     private List<GameStateEnum> VALID_STATES;
@@ -60,7 +60,7 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         ForceExit();
     }
-    public void SetCardInfo(Card card)
+    public void SetCardInfo(CardInstance card)
     {
         // 안전장치
         if (card == null) 
