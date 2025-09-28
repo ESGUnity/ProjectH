@@ -10,13 +10,12 @@ public class GameFlowManager : MonoBehaviour
 
     // private 필드(컴포넌트)
     private CardSettingManager cardSettingManager;
-    private CardManager cardManager;
     private SaveLoadManager saveLoadManager;
-    private PlayerCard pCard;
-    private OppoCard oCard;
+    private DeckManager deckManager;
+    private HandManager handManager;
 
     // private 필드
-    private int currentPan; // 현재 판 수
+    private int currentRound; // 현재 판 수
     private GameStateEnum gameState;
 
     // public Getter
@@ -32,7 +31,6 @@ public class GameFlowManager : MonoBehaviour
         // 싱글턴
         if (instance != null)
         {
-            Debug.LogError("GameFlowManager Send : 중복 싱글턴 생성 시도.");
             Destroy(gameObject);
             return;
         }
@@ -41,16 +39,20 @@ public class GameFlowManager : MonoBehaviour
 
         // 컴포넌트 할당
         TryGetComponent(out cardSettingManager);
-        TryGetComponent(out cardManager);
         TryGetComponent(out saveLoadManager);
-        TryGetComponent(out pCard);
-        TryGetComponent(out oCard);
+        TryGetComponent(out deckManager);
+        TryGetComponent(out handManager);
+    }
+    private async void Start()
+    {
+        // 새 게임 혹은 이어하기를 눌렀을 때(현재는 새 게임으로 항상 가정)
+        await InitGame(InitGameEnum.NewGame);
     }
 
     // 메인
-    private void InitGame(InitGameEnum initGame) // 새 게임 혹은 이어하기(타이틀의 버튼에 연결)
+    private async Task InitGame(InitGameEnum initGame) // 새 게임 혹은 이어하기(타이틀의 버튼에 연결)
     {
-        currentPan = 0;
+        currentRound = 0;
 
         if (initGame == InitGameEnum.NewGame) // 새 게임인 경우
         {
@@ -58,15 +60,19 @@ public class GameFlowManager : MonoBehaviour
             {
                 PlayerPrefs.SetInt("TutorialCompleted", 0);
                 PlayerPrefs.Save();
+                PlayerPrefs.SetInt("TutorialCompleted", 1);
+
                 // TODO
             }
             else if (PlayerPrefs.GetInt("TutorialCompleted") == 0) // 튜토리얼을 완료하지 못한 경우 튜토리얼
             {
+                PlayerPrefs.SetInt("TutorialCompleted", 1);
+
                 // TODO
             }
             else // 튜토리얼을 완료한 경우 바로 본 게임
             {
-                StartPan();
+                await StartRound();
             }
         }
         else if (initGame == InitGameEnum.LoadGame) // 이어하기인 경우
@@ -74,17 +80,13 @@ public class GameFlowManager : MonoBehaviour
             // TODO
         }
     }
-    private void StartPan() // 판 시작
+    private async Task StartRound() // 라운드 시작
     {
-        cardSettingManager.GenerateInitCards(); // 해당 판에서 사용할 패 오브젝트들을 생성
-        cardSettingManager.DealHandCards(); // 손 패 나눠주기
+        cardSettingManager.SetMiddlePile(); // 해당 판에서 사용할 패 오브젝트들을 생성
+        await cardSettingManager.DealCards(); // 손 패 나눠주기
     }
     private void StartSetUp() // 판 종료 후 화투를 추가하거나 규칙을 추가하는 정비 시작
     {
-        // 내 카드 10장을 뽑고 그 중 1장에 꽃을 그려넣는다.
-        // 사용 카드인 버섯 카드를 구매한다.
-        // 달성한 꽃 키우기를 클릭하여 보상을 얻는다.
-        // 모든 세팅을 마친 플레이어는 시작 버튼을 눌러 본 게임을 시작한다.
 
     }
 

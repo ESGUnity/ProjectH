@@ -1,23 +1,17 @@
+using Newtonsoft.Json;
 using System;
 using System.Collections.Generic;
 
-[Serializable]
+[Serializable] // Json용
 public class CardInstance
 {
-    public int Month;
-    public bool IsGwang;
-    public bool IsGgeut;
-    public bool IsTti;
-    public bool IsSsangPi;
+    public int Month { get; private set; }
+    public HashSet<CardTypeEnum> Types { get; set; }
+    public CardEffectInstance Effect { get; set; }
 
-    public CardEffectInstance Effect;
-
-    public CardInstance(int month, bool isGwang, bool isGgeut, bool isTti, bool isSsangPi)
+    public CardInstance(int month, HashSet<CardTypeEnum> types)
     {
         Month = month;
-        IsGwang = isGwang;
-        IsGgeut = isGgeut;
-        IsTti = isTti;
-        IsSsangPi = isSsangPi;
+        Types = new HashSet<CardTypeEnum>(types);
     }
 }

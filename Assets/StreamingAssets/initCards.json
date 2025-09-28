@@ -1,0 +1,205 @@
+[
+  {
+    "Month": 1,
+    "Types": [ "Gwang" ]
+  },
+  {
+    "Month": 1,
+    "Types": [ "Tti_HongDan" ]
+  },
+  {
+    "Month": 1,
+    "Types": [ ]
+  },
+  {
+    "Month": 1,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 2,
+    "Types": [ "Tti_HongDan" ]
+  },
+  {
+    "Month": 2,
+    "Types": [ "Kkeut_Bird" ]
+  },
+  {
+    "Month": 2,
+    "Types": [ ]
+  },
+  {
+    "Month": 2,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 3,
+    "Types": [ "Gwang" ]
+  },
+  {
+    "Month": 3,
+    "Types": [ "Tti_HongDan" ]
+  },
+  {
+    "Month": 3,
+    "Types": [ ]
+  },
+  {
+    "Month": 3,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 4,
+    "Types": [ "Tti_ChoDan" ]
+  },
+  {
+    "Month": 4,
+    "Types": [ "Kkeut_Bird" ]
+  },
+  {
+    "Month": 4,
+    "Types": [ ]
+  },
+  {
+    "Month": 4,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 5,
+    "Types": [ "Tti_ChoDan" ]
+  },
+  {
+    "Month": 5,
+    "Types": [ "Kkeut_Boar" ]
+  },
+  {
+    "Month": 5,
+    "Types": [ ]
+  },
+  {
+    "Month": 5,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 6,
+    "Types": [ "Tti_ChungDan" ]
+  },
+  {
+    "Month": 6,
+    "Types": [ "Kkeut_Boar" ]
+  },
+  {
+    "Month": 6,
+    "Types": [ ]
+  },
+  {
+    "Month": 6,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 7,
+    "Types": [ "Tti_ChoDan" ]
+  },
+  {
+    "Month": 7,
+    "Types": [ "Kkeut_Boar" ]
+  },
+  {
+    "Month": 7,
+    "Types": [ ]
+  },
+  {
+    "Month": 7,
+    "Types": [ ]
+  },
+
+  {
+    "Month": 8,
+    "Types": [ "Gwang"  ]
+  },
+  {
+    "Month": 8,
+    "Types": [ "Kkeut_Bird" ]
+  },
+  {
+    "Month": 8,
+    "Types": []
+  },
+  {
+    "Month": 8,
+    "Types": []
+  },
+
+  {
+    "Month": 9,
+    "Types": [ "Tti_ChungDan"]
+  },
+  {
+    "Month": 9,
+    "Types": [ "Kkeut_Deer" ]
+  },
+  {
+    "Month": 9,
+    "Types": []
+  },
+  {
+    "Month": 9,
+    "Types": []
+  },
+
+  {
+    "Month": 10,
+    "Types": [ "Tti_ChungDan" ]
+  },
+  {
+    "Month": 10,
+    "Types": [ "Kkeut_Deer" ]
+  },
+  {
+    "Month": 10,
+    "Types": []
+  },
+  {
+    "Month": 10,
+    "Types": []
+  },
+
+  {
+    "Month": 11,
+    "Types": [ "Gwang" ]
+  },
+  {
+    "Month": 11,
+    "Types": [ "SsangPi" ]
+  },
+  {
+    "Month": 11,
+    "Types": []
+  },
+  {
+    "Month": 11,
+    "Types": []
+  },
+
+  {
+    "Month": 12,
+    "Types": [ "Gwang" ]
+  },
+  {
+    "Month": 12,
+    "Types": [ "Kkeut_Deer" ]
+  },
+  {
+    "Month": 12,
+    "Types": [ "SsangPi" ]
+  },
+  {
+    "Month": 12,
+    "Types": []
+  }
+]

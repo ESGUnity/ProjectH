@@ -8,7 +8,7 @@ using UnityEngine;
 public static class JsonLoader
 {
     // private 필드
-    public static readonly string BASIC_CARD_PATH = Path.Combine(Application.streamingAssetsPath, "cards.json");
+    public static readonly string INIT_CARDS_PATH = Path.Combine(Application.streamingAssetsPath, "initCards.json");
 
     // 메인
     private static IEnumerable<JObject> EnumerateObjects(string jsonPath) // JSON 배열 순회하며 조건에 맞는 JObject를 반환
@@ -33,17 +33,20 @@ public static class JsonLoader
             }
         }
     }
-    public static List<CardInstance> LoadCards(string path) // 기본 CardINstance를 반환(48장)
+    public static List<CardInstance> LoadInitCards() // 초기 CardInstance를 반환(48장)
     {
-        return JsonConvert.DeserializeObject<List<CardInstance>>(File.ReadAllText(path));
+        return JsonConvert.DeserializeObject<List<CardInstance>>(File.ReadAllText(INIT_CARDS_PATH));
     }
     public static CardEffectInstance GetEffectByKeyFromJson(string jsonPath, string targetKey) // Key로 CardEffect 찾기
     {
         foreach (var obj in EnumerateObjects(jsonPath))
         {
-            var key = (string)obj["Key"];
+            string key = (string)obj["Key"];
+
             if (string.Equals(key, targetKey, StringComparison.Ordinal))
+            {
                 return ToInstance(obj);
+            }
         }
         return null;
     }

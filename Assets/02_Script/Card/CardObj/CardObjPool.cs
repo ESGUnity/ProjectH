@@ -27,7 +27,7 @@ public class CardObjPool : MonoBehaviour
             return;
         }
         instance = this;
-        DontDestroyOnLoad(gameObject);
+        //DontDestroyOnLoad(gameObject);
 
         InitializePool();
     }

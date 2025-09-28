@@ -10,7 +10,6 @@ public class CardEffectInstance
     public CardRarityEnum Rarity { get; }
     public Dictionary<string, float> Params { get; set; }
 
-
     public CardEffectInstance(string key, string name, string desc, CardRarityEnum rarity, Dictionary<string, float> param)
     {
         Key = key;

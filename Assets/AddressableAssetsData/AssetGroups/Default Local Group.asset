@@ -1,0 +1,73 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: bbb281ee3bf0b054c82ac2347e9e782c, type: 3}
+  m_Name: Default Local Group
+  m_EditorClassIdentifier: 
+  m_GroupName: Default Local Group
+  m_GUID: f63c52ccdcb35b54786d7e5ea9df9313
+  m_SerializeEntries:
+  - m_GUID: 05d0d66950a11d844a4188d6556fb0c2
+    m_Address: Sprite_Gwang
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 518f072de3293774b8c10c87189ca255
+    m_Address: Sprite_Tti_ChoDan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6ae582df48315b040b92fc8732a8615f
+    m_Address: Sprite_CardBase_Front
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 6e794738e5bdeba4a9eda44db45ed589
+    m_Address: Sprite_SsangPi
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7b32961873eb84144aa35b52d44e3434
+    m_Address: Sprite_Tti_ChungDan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 7db602f43b1ed9f43a785934731051b9
+    m_Address: Sprite_Kkeut_Boar
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: 971493f90c3c411478fd6704865e1267
+    m_Address: Sprite_Tti_HongDan
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d248e835c7612614da27eff46d2c2527
+    m_Address: Sprite_Kkeut_Bird
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: d6b6f7b45dc64c04da0949bb44875080
+    m_Address: Sprite_CardBase_Verso
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  - m_GUID: f5457b0fd358b1a4ebb5fee97274564a
+    m_Address: Sprite_Kkeut_Deer
+    m_ReadOnly: 0
+    m_SerializedLabels: []
+    FlaggedDuringContentUpdateRestriction: 0
+  m_ReadOnly: 0
+  m_Settings: {fileID: 11400000, guid: cef66363b0fb58042be9489abcf0f883, type: 2}
+  m_SchemaSet:
+    m_Schemas:
+    - {fileID: 11400000, guid: c4c357e4ca55dcc4d91f0f2b773e7a71, type: 2}
+    - {fileID: 11400000, guid: 67552574988a23945a04acd05e6fb0f1, type: 2}

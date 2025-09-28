@@ -13,25 +13,28 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     private const float POINTER_ENTER_ANIMATION_TIME = 0.15f;
 
     // private 필드(컴포넌트)
-    [SerializeField] private Collider col;
-    [SerializeField] private SpriteRenderer cardBaseSprite;
+    private CardObjSpriteLoader spriteLoader;
+    private Collider col;
+    private SpriteRenderer cardBaseSprite;
 
     // private 필드
+    private readonly List<GameStateEnum> VALID_STATES = new();
     private CardInstance cardInfo;
-    private PRS originPRS;
-    private int OriginOrder;
-    private List<GameStateEnum> VALID_STATES;
     private GameStateEnum prevState;
+
+    // public 필드
+    public PRS OriginPRS;
+
+    // pulblic Setter
+    public CardInstance CardInfo { get { return cardInfo; } }
 
     // 유니티 콜백
     private void Awake()
     {
         // 컴포넌트 할당
+        TryGetComponent(out spriteLoader);
         TryGetComponent(out col);
         TryGetComponent(out cardBaseSprite);
-
-        // 변수 할당
-        VALID_STATES = new();
     }
     private void Update()
     {
@@ -60,16 +63,12 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     {
         ForceExit();
     }
+
+    // 메인
     public void SetCardInfo(CardInstance card)
     {
-        // 안전장치
-        if (card == null) 
-        {
-            Debug.LogError("CardObj Send : Card 클래스가 null입니다.");
-            return;
-        }
-
         cardInfo = card; // 카드 정보 할당
+        spriteLoader.SetCardObjSprites(); // 스프라이트 세팅
     }
     public void OnPointerEnter(PointerEventData eventData)
     {
@@ -106,34 +105,4 @@ public class CardObj : MonoBehaviour, IPointerEnterHandler, IPointerExitHandler
     }
 
 
-
-
-    //void OnCardBaseLoadComplete(AsyncOperationHandle<Sprite> opHandle)
-    //{
-    //    if (opHandle.Status == AsyncOperationStatus.Succeeded)
-    //    {
-    //        sprite_CardBase.sprite = opHandle.Result;
-    //    }
-    //}
-    //public void SetOrder(int order) // 카드 요소의 소팅 오더를 정렬
-    //{
-    //    // 카드 베이스
-    //    sprite_CardBase.sortingLayerName = "WorldObject";
-    //    sprite_CardBase.sortingOrder = order + 1;
-    //    sprite_CardFrame.sortingLayerName = "WorldObject";
-    //    sprite_CardFrame.sortingOrder = order + 5;
-    //    text_CardType.GetComponent<MeshRenderer>().sortingLayerName = "WorldObject";
-    //    text_CardType.GetComponent<MeshRenderer>().sortingOrder = order + 6;
-    //    text_CardNumber.GetComponent<MeshRenderer>().sortingLayerName = "WorldObject";
-    //    text_CardNumber.GetComponent<MeshRenderer>().sortingOrder = order + 6;
-
-    //    sprite_CardEffect.sortingLayerName = "WorldObject";
-    //    sprite_CardEffect.sortingOrder = order + 2;
-    //    sprite_Engraving.sortingLayerName = "WorldObject";
-    //    sprite_Engraving.sortingOrder = order + 3;
-    //    sprite_CursedEffect.sortingLayerName = "WorldObject";
-    //    sprite_CursedEffect.sortingOrder = order + 7;
-    //    sprite_CursedEffect2.sortingLayerName = "WorldObject";
-    //    sprite_CursedEffect2.sortingOrder = order + 7;
-    //}
 }
